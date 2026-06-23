@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-btn { padding: 10px 20px; margin: 10px; background: #667eea; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .test-btn:hover { background: #5a67d8; }
+        .result { margin: 20px 0; padding: 10px; background: #f0f0f0; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Auth System Test</h1>
+    <button class="test-btn" onclick="testAuth()">Test Auth System</button>
+    <button class="test-btn" onclick="clearStorage()">Clear LocalStorage</button>
+    <button class="test-btn" onclick="showStorage()">Show Storage</button>
+    <div id="result" class="result"></div>
+
+    <script>
+        function testAuth() {
+            const result = document.getElementById('result');
+            try {
+                // Test if Auth module is loaded
+                if (typeof Auth === 'undefined') {
+                    result.innerHTML = '<span style="color: red;">❌ Auth module not loaded</span>';
+                    return;
+                }
+
+                // Test if user is logged in
+                const isLoggedIn = Auth.isLoggedIn();
+                result.innerHTML = `<div>✅ Auth module loaded</div>
+                                   <div>🔍 User logged in: ${isLoggedIn}</div>`;
+
+                if (!isLoggedIn) {
+                    result.innerHTML += '<div>📝 Showing auth screen...</div>';
+                    Auth.showAuthScreen();
+                } else {
+                    const profile = Auth.getCurrentProfile();
+                    result.innerHTML += `<div>👤 Current user: ${profile ? profile.displayName : 'Unknown'}</div>`;
+                }
+            } catch (err) {
+                result.innerHTML = `<span style="color: red;">❌ Error: ${err.message}</span>`;
+                console.error(err);
+            }
+        }
+
+        function clearStorage() {
+            localStorage.clear();
+            document.getElementById('result').innerHTML = '🗑️ LocalStorage cleared';
+        }
+
+        function showStorage() {
+            const result = document.getElementById('result');
+            const keys = Object.keys(localStorage);
+            if (keys.length === 0) {
+                result.innerHTML = '📭 LocalStorage is empty';
+                return;
+            }
+
+            let html = '<div>📦 LocalStorage contents:</div><ul>';
+            keys.forEach(key => {
+                const value = localStorage.getItem(key);
+                html += `<li><strong>${key}:</strong> ${value.length > 50 ? value.substring(0, 50) + '...' : value}</li>`;
+            });
+            html += '</ul>';
+            result.innerHTML = html;
+        }
+    </script>
+
+    <!-- Load the app scripts -->
+    <script src="storage.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>

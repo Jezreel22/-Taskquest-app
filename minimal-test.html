@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Auth Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .auth-screen { background: #f0f0f0; padding: 20px; border: 1px solid #ccc; }
+        .hidden { display: none !important; }
+        .auth-form { margin: 20px 0; }
+        .form-input { padding: 8px; margin: 5px 0; width: 200px; }
+        .btn { padding: 10px 20px; background: #007bff; color: white; border: none; cursor: pointer; }
+        .btn:hover { background: #0056b3; }
+        .auth-error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Minimal Auth Test</h1>
+
+    <div id="auth-screen" class="auth-screen">
+        <div class="auth-tabs">
+            <button id="auth-tab-login" class="btn">Sign In</button>
+            <button id="auth-tab-register" class="btn">Create Profile</button>
+        </div>
+
+        <div id="auth-login-form" class="auth-form">
+            <h3>Login</h3>
+            <input type="text" id="auth-login-username" class="form-input" placeholder="Username">
+            <button id="auth-login-btn" class="btn">Login</button>
+            <p id="auth-login-error" class="auth-error hidden"></p>
+        </div>
+
+        <div id="auth-register-form" class="auth-form hidden">
+            <h3>Register</h3>
+            <input type="text" id="auth-reg-displayname" class="form-input" placeholder="Display Name">
+            <input type="text" id="auth-reg-username" class="form-input" placeholder="Username">
+            <button id="auth-register-btn" class="btn">Register</button>
+            <p id="auth-reg-error" class="auth-error hidden"></p>
+        </div>
+    </div>
+
+    <div id="app-wrapper" class="hidden">
+        <h2>Welcome to the app!</h2>
+        <button id="logout-btn" class="btn">Logout</button>
+    </div>
+
+    <script src="storage.js"></script>
+    <script src="auth.js"></script>
+
+    <script>
+        // Override the init to always show auth screen
+        Auth.init();
+        Auth.showAuthScreen();
+
+        // Add some debugging
+        console.log('Auth initialized');
+        console.log('Is logged in:', Auth.isLoggedIn());
+    </script>
+</body>
+</html>

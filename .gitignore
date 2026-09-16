@@ -13,3 +13,8 @@ Thumbs.db
 
 # Node (just in case)
 node_modules/
+
+# Environment variables
+# .env          ← committed (safe defaults only, no secrets)
+.env.local       # local overrides — NEVER commit (contains secrets)
+.env.*.local     # other local env files

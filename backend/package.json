@@ -1,0 +1,22 @@
+{
+  "name": "taskquest-backend",
+  "version": "1.0.0",
+  "description": "TaskQuest – Scalable Node.js REST API Backend",
+  "main": "src/server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "jest --testEnvironment=node --forceExit",
+    "test:watch": "jest --watch"
+  },
+  "keywords": ["taskquest", "api", "nodejs", "express", "mongodb"],
+  "author": "TaskQuest",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "jest": {
+    "testMatch": ["**/tests/**/*.test.js"]
+  }
+}

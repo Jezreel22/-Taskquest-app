@@ -4,42 +4,42 @@
 
 /* ---- CSS Custom Properties ---- */
 :root {
-    /* Colors (Theme-agnostic) */
-    --clr-primary: #667eea;
-    --clr-primary-light: #7c8ff0;
-    --clr-primary-dark: #5a67d8;
-    --clr-secondary: #4facfe;
-    --clr-secondary-light: #6bb6ff;
-    --clr-accent: #00d2d3;
-    --clr-accent-light: #2de1e3;
-    --clr-success: #00b894;
-    --clr-success-light: #00cec9;
-    --clr-warning: #fdcb6e;
-    --clr-warning-light: #ffeaa7;
-    --clr-danger: #ff6b6b;
-    --clr-danger-light: #ff7675;
+    /* Premium Vibrant Colors (Theme-agnostic) */
+    --clr-primary: #6366f1;
+    --clr-primary-light: #818cf8;
+    --clr-primary-dark: #4f46e5;
+    --clr-secondary: #06b6d4;
+    --clr-secondary-light: #22d3ee;
+    --clr-accent: #a855f7;
+    --clr-accent-light: #c084fc;
+    --clr-success: #10b981;
+    --clr-success-light: #34d399;
+    --clr-warning: #f59e0b;
+    --clr-warning-light: #fbbf24;
+    --clr-danger: #ef4444;
+    --clr-danger-light: #f87171;
 
-    /* Dark Theme (Default) */
-    --bg-primary: #0D1117;
-    --bg-secondary: #161B22;
-    --bg-tertiary: #1C2333;
-    --bg-elevated: #21283B;
+    /* Dark Theme (Default - Deep Slate / Aurora Dusk) */
+    --bg-primary: #090d16;
+    --bg-secondary: #111827;
+    --bg-tertiary: #1f2937;
+    --bg-elevated: #374151;
 
     /* Glass */
-    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-bg: rgba(255, 255, 255, 0.04);
     --glass-bg-hover: rgba(255, 255, 255, 0.08);
     --glass-border: rgba(255, 255, 255, 0.1);
-    --glass-border-hover: rgba(255, 255, 255, 0.18);
-    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --glass-border-hover: rgba(168, 85, 247, 0.35);
+    --glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 1px rgba(255, 255, 255, 0.1);
 
     /* Text */
-    --text-primary: #E6E8EB;
-    --text-secondary: #8B949E;
-    --text-muted: #6E7681;
-    --text-inverse: #0D1117;
+    --text-primary: #f3f4f6;
+    --text-secondary: #9ca3af;
+    --text-muted: #6b7280;
+    --text-inverse: #090d16;
 
     /* Additional Theme Colors */
-    --topbar-bg-rgb: 13, 17, 23;
+    --topbar-bg-rgb: 17, 24, 39;
 
     /* Spacing */
     --space-xs: 4px;
@@ -51,13 +51,14 @@
     --space-3xl: 64px;
 
     /* Border Radius */
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 16px;
-    --radius-xl: 24px;
+    --radius-sm: 10px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-xl: 28px;
     --radius-full: 50%;
 
     /* Fonts */
+    --font-heading: 'Outfit', 'Inter', -apple-system, sans-serif;
     --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
     /* Transitions */
@@ -79,29 +80,28 @@
     --z-onboarding: 400;
 }
 
-/* Light Mode Theme */
+/* Light Mode Theme (Crystal Clean) */
 :root[data-theme="light"] {
-    /* Light Theme */
-    --bg-primary: #e5ebf1;
-    --bg-secondary: #edf2f7;
-    --bg-tertiary: #dce7f0;
-    --bg-elevated: #f3f7fb;
+    --bg-primary: #f1f5f9;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #e2e8f0;
+    --bg-elevated: #f8fafc;
 
     /* Glass */
-    --glass-bg: rgba(255, 255, 255, 0.28);
-    --glass-bg-hover: rgba(255, 255, 255, 0.36);
-    --glass-border: rgba(15, 23, 42, 0.08);
-    --glass-border-hover: rgba(15, 23, 42, 0.12);
-    --glass-shadow: 0 8px 32px rgba(15, 23, 42, 0.05);
+    --glass-bg: rgba(255, 255, 255, 0.75);
+    --glass-bg-hover: rgba(255, 255, 255, 0.9);
+    --glass-border: rgba(99, 102, 241, 0.12);
+    --glass-border-hover: rgba(99, 102, 241, 0.3);
+    --glass-shadow: 0 10px 30px rgba(99, 102, 241, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
 
     /* Text */
-    --text-primary: #243240;
-    --text-secondary: #4B5563;
-    --text-muted: #6B7280;
-    --text-inverse: #F8F9FA;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    --text-inverse: #ffffff;
 
     /* Additional Theme Colors */
-    --topbar-bg-rgb: 245, 246, 250;
+    --topbar-bg-rgb: 255, 255, 255;
 }
 
 /* ---- Reset & Base ---- */
@@ -127,16 +127,20 @@ body {
     line-height: 1.6;
 }
 
-/* Background pattern */
+h1, h2, h3, h4, .auth-logo-text, .logo-text, .onboarding-title {
+    font-family: var(--font-heading);
+}
+
+/* Ambient glow background pattern */
 body::before {
     content: '';
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
     background: 
-        radial-gradient(ellipse at 20% 50%, rgba(102, 126, 234, 0.03) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 20%, rgba(118, 75, 162, 0.02) 0%, transparent 50%),
-        radial-gradient(ellipse at 60% 80%, rgba(79, 172, 254, 0.025) 0%, transparent 50%);
+        radial-gradient(circle at 15% 20%, rgba(99, 102, 241, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 85% 15%, rgba(168, 85, 247, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 50% 85%, rgba(6, 182, 212, 0.08) 0%, transparent 50%);
     pointer-events: none;
     z-index: 0;
     transition: background var(--transition-slow);
@@ -144,9 +148,9 @@ body::before {
 
 :root[data-theme="light"] body::before {
     background: 
-        radial-gradient(ellipse at 20% 50%, rgba(102, 126, 234, 0.03) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 20%, rgba(118, 75, 162, 0.015) 0%, transparent 50%),
-        radial-gradient(ellipse at 60% 80%, rgba(79, 172, 254, 0.02) 0%, transparent 50%);
+        radial-gradient(circle at 15% 20%, rgba(99, 102, 241, 0.07) 0%, transparent 45%),
+        radial-gradient(circle at 85% 15%, rgba(168, 85, 247, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 50% 85%, rgba(6, 182, 212, 0.05) 0%, transparent 50%);
 }
 
 a { color: inherit; text-decoration: none; }
@@ -157,7 +161,7 @@ ul { list-style: none; }
 /* ---- Utility Classes ---- */
 .hidden { display: none !important; }
 .gradient-text {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #22d3ee 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -270,13 +274,14 @@ ul { list-style: none; }
 
 /* ---- Notification Banner ---- */
 .notification-banner {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    background: linear-gradient(135deg, var(--clr-primary), var(--clr-secondary));
+    position: relative;
+    width: 100%;
+    background: linear-gradient(135deg, var(--clr-primary), var(--clr-accent));
     color: #fff;
-    padding: var(--space-sm) var(--space-lg);
-    z-index: var(--z-toast);
+    padding: 10px var(--space-lg);
+    z-index: var(--z-topbar);
     animation: slideDown 0.4s var(--transition-bounce);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
 }
 .notification-banner-content {
     max-width: 1200px;
@@ -295,7 +300,7 @@ ul { list-style: none; }
     border: 1px solid rgba(255,255,255,0.3);
 }
 .notification-banner .btn-sm:hover {
-    background: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.35);
 }
 
 /* ---- Onboarding ---- */
@@ -321,10 +326,15 @@ ul { list-style: none; }
     animation: scaleIn 0.5s var(--transition-bounce);
 }
 .onboarding-mascot-img {
-    width: 140px;
-    height: 140px;
+    width: 120px;
+    height: 120px;
     object-fit: contain;
+    border-radius: var(--radius-lg);
+    background: #ffffff;
+    padding: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     animation: mascotBounce 2s ease-in-out infinite;
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
 }
 .onboarding-title {
     font-size: 1.75rem;
@@ -1425,8 +1435,9 @@ ul { list-style: none; }
     width: 100%;
     height: 100%;
     border-radius: var(--radius-full);
-    object-fit: cover;
-    background: var(--bg-secondary);
+    object-fit: contain;
+    background: linear-gradient(135deg, rgba(17, 24, 39, 0.9), rgba(31, 41, 55, 0.9));
+    padding: 4px;
 }
 .mascot-status {
     position: absolute;
@@ -1863,10 +1874,15 @@ ul { list-style: none; }
     margin-bottom: var(--space-lg);
 }
 .auth-mascot-img {
-    width: 70px;
-    height: 70px;
+    width: 64px;
+    height: 64px;
     object-fit: contain;
+    border-radius: var(--radius-md);
+    background: #ffffff;
+    padding: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     animation: mascotBounce 2s ease-in-out infinite;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
 }
 .auth-logo-text {
     font-size: 1.8rem;
